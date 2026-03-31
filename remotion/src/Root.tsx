@@ -1,7 +1,6 @@
-import "./index.css";
 import { Composition } from "remotion";
-import { HelloWorld, myCompSchema } from "./HelloWorld";
-import { Logo, myCompSchema2 } from "./HelloWorld/Logo";
+import { HelloWorld, myCompSchema } from "./video/HelloWorld";
+import { Logo, myCompSchema2 } from "./video/HelloWorld/Logo";
 
 // Each <Composition> is an entry in the sidebar!
 
@@ -21,8 +20,8 @@ export const RemotionRoot: React.FC = () => {
         // https://www.remotion.dev/docs/parametrized-rendering
         schema={myCompSchema}
         defaultProps={{
-          titleText: "Welcome to Remotion",
-          titleColor: "#000000",
+          titleText: "Hello COMPSCI 732",
+          titleColor: "#3b82f6",
           logoColor1: "#91EAE4",
           logoColor2: "#86A8E7",
         }}

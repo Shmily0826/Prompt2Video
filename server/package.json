@@ -1,0 +1,50 @@
+{
+  "name": "prompt2video",
+  "version": "1.0.0",
+  "description": "My Remotion video",
+  "repository": {},
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@remotion/bundler": "^4.0.441",
+    "@remotion/cli": "4.0.441",
+    "@remotion/player": "^4.0.441",
+    "@remotion/renderer": "^4.0.441",
+    "@remotion/tailwind-v4": "4.0.441",
+    "@remotion/zod-types": "4.0.441",
+    "body-parser": "^2.2.2",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "openai": "^6.33.0",
+    "puppeteer": "^24.40.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.441",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.441",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@types/web": "0.0.166",
+    "@vitejs/plugin-react": "^6.0.1",
+    "autoprefixer": "^10.4.27",
+    "eslint": "9.19.0",
+    "postcss": "^8.5.8",
+    "prettier": "3.8.1",
+    "tailwindcss": "^4.2.2",
+    "typescript": "5.9.3",
+    "vite": "^8.0.3"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "remotion": "remotion studio",
+    "render": "remotion render src/index.tsx HelloWorld out/video.mp4"
+  },
+  "sideEffects": [
+    "*.css"
+  ]
+}
