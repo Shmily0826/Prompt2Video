@@ -13,7 +13,8 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx", // 👈 这一行是解决 JSX 报错的关键
+    "types": ["react", "node"]
   },
-  "include": ["remotion", "frontend"]
+  "include": ["remotion", "frontend", "server"]
 }
