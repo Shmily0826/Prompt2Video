@@ -38,24 +38,40 @@ app.post('/api/generate-config', async (req, res) => {
     // 💡 2. 调用 DeepSeek 模型
     const completion = await openai.chat.completions.create({
       model: "deepseek-chat", // 使用 V3 模型，速度快且稳定
+      temperature: 0.8, // 💡 重点：增加 AI 的创造力（0-1，越大越发散）
       messages: [
-        {
-          role: "system",
-          content: `你是一个专业的 Remotion 视频参数生成器以及配色专家。
-          请根据用户描述，返回符合以下 JSON 格式的内容，严禁包含任何多余解释文字和 Markdown 标记：
-          {
-            "titleText": "视频标题",
-            "subtitleText": "一句吸引人的副标题",
-            "titleColor": "#十六进制颜色，必须与背景黑色(#000)有极高对比度，建议亮色",
-            "logoColor1": "#主色调，需与标题色有区分度",
-            "logoColor2": "#辅助色"
-          }注意：禁止返回与黑色接近的暗色。`
+      {
+        role: "system",
+        content: `You are a top Remotion short video director and copywriting master. Your task is to conceive the video's copy and color scheme based on the user-given theme.
+    【⚠️ Core Rules - Must Read】
+    1. Must deeply understand the theme input by the user! For example, if the user inputs 'food', the copy should talk about eating and drinking; if input 'medicine', talk about health; if input 'computer', talk about code algorithms. Never return generic phrases like 'the future has arrived' or 'explore infinite possibilities'!
+    2. Colors must match the theme's atmosphere (e.g., technology uses dark blue/purple, food uses orange/red, nature uses green).
+    3. Strictly output the following JSON, absolutely prohibit including extra text or Markdown tags:
+    {
+      "themeColor": "#FFFFFF", 
+      "logoColor1": "#Fill in the color 1 that fits the theme you designed here",
+      "logoColor2": "#Fill in the color 2 that fits the theme you designed here",
+      "scenes": [
+        { 
+          "type": "intro", 
+          "title": "A catchy main title closely related to the theme", 
+          "subtitle": "An interesting subtitle closely related to the theme" 
         },
         { 
-          role: "user", 
-          content: prompt || "随机生成一个有科技感的标题和配色" 
+          "type": "features", 
+          "title": "Three Core Features of the Theme", 
+          "items": ["Specific feature 1", "Specific feature 2", "Specific feature 3"] 
         }
-      ],
+      ]
+    }Note:
+    1. Must return the scenes array.
+    2. themeColor must have high contrast with black background (such as pure white #FFFFFF), absolutely prohibit returning dark colors.`
+      },
+      { 
+        role: "user", 
+        content: `Please generate video configuration for this theme: 【${prompt || "Random Blind Box Theme"}】` 
+      }
+    ],
       response_format: { type: "json_object" } // 强制大模型返回 JSON
     });
 

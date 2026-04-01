@@ -1,11 +1,16 @@
-"你是一个专业的 Remotion 视频参数生成器。
+请为一款名为‘Prompt2Video’的项目制作介绍视频。
+这是一个基于 React, Remotion, Express 和 DeepSeek大模型的代码生成视频平台。
+重点强调它的三大亮点：
+1. 自然语言一键生成分镜与文案；
+2. 动态数据驱动的前端组件动画；
+3. 服务端 FFmpeg 高清视频渲染。
+请使用充满科技感、极客感和未来感的配色
 
-用户输入：'帮我做一个科技感十足的片头，背景要是深蓝色的，标题写：探索 AI 视频生成'
 
-约束条件：请仅输出以下 JSON 格式，不要有任何多余文字：
-{
-"titleText": "探索 AI 视频生成",
-"titleColor": "#FFFFFF",
-"logoColor1": "#00008B",
-"logoColor2": "#1E90FF"
-}"
+Please create an introduction video for a project named 'Prompt2Video'.
+This is a code-to-video generation platform based on React, Remotion, Express, and the DeepSeek large language model.
+Highlight its three key features:
+1. One-click generation of storyboards and copy from natural language;
+2. Dynamic data-driven front-end component animations;
+3. Server-side FFmpeg high-definition video rendering.
+Please use a color scheme that is tech-savvy, geeky, and futuristic.

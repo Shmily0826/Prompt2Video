@@ -1,29 +1,32 @@
 import React, { useMemo } from 'react';
-import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig } from 'remotion';
+// 💡 1. 引入 Remotion 的 random 函数
+import { AbsoluteFill, interpolate, useCurrentFrame, useVideoConfig, random } from 'remotion';
 
 export const Background: React.FC<{ color: string }> = ({ color }) => {
   const frame = useCurrentFrame();
-  const { durationInFrames, width, height } = useVideoConfig();
+  const { width, height } = useVideoConfig();
 
-  // 使用 useMemo 保证粒子在重绘时位置不会乱跳，只在初始化时随机一次
   const particles = useMemo(() => {
     return new Array(30).fill(0).map((_, i) => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      size: Math.random() * 10 + 5,
-      speed: Math.random() * 2 + 1,
-      delay: Math.random() * 100,
+      // 💡 2. 把所有的 Math.random() 替换为 random(seed)。
+      // 只要传入的字符串(seed)不变，它每次返回的随机数就绝对一样！
+      x: random(`x-${i}`) * width,
+      y: random(`y-${i}`) * height,
+      size: random(`size-${i}`) * 10 + 5,
+      speedFactor: random(`speed-${i}`) * 2 + 1, 
+      delay: random(`delay-${i}`) * 100,
     }));
   }, [width, height]);
+
+  const PARTICLE_FLOW_PERIOD = 300; 
 
   return (
     <AbsoluteFill style={{ backgroundColor: '#000', overflow: 'hidden' }}>
       {particles.map((p, i) => {
-        // 让粒子向上缓缓流动
         const translateY = interpolate(
-          (frame + p.delay) % durationInFrames,
-          [0, durationInFrames],
-          [0, -height - 100]
+          ((frame + p.delay) * p.speedFactor) % PARTICLE_FLOW_PERIOD,
+          [0, PARTICLE_FLOW_PERIOD],
+          [0, -height - 200]
         );
 
         return (
@@ -32,13 +35,13 @@ export const Background: React.FC<{ color: string }> = ({ color }) => {
             style={{
               position: 'absolute',
               left: p.x,
-              top: p.y + height, // 从屏幕下方开始
+              top: p.y + height + 100, 
               width: p.size,
               height: p.size,
               backgroundColor: color,
               borderRadius: '50%',
               opacity: 0.4,
-              filter: 'blur(4px)', // 模糊效果让它看起来像光点
+              filter: 'blur(4px)',
               transform: `translateY(${translateY}px)`,
             }}
           />
