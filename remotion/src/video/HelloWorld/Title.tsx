@@ -17,9 +17,11 @@ const word: React.CSSProperties = {
 };
 
 export const Title: React.FC<{
-  readonly titleText: string;
-  readonly titleColor: string;
-}> = ({ titleText, titleColor }) => {
+  readonly titleText?: string;
+  readonly titleColor?: string;
+}> = ({ titleText= "默认标题",
+       titleColor= "#FFFFFF" 
+    }) => {
   const videoConfig = useVideoConfig();
   const frame = useCurrentFrame();
 
@@ -40,7 +42,8 @@ export const Title: React.FC<{
 
         return (
           <span
-            key={t}
+            // 💡 关键修改：使用单词+索引作为 key，防止重复单词报错
+            key={`${t}-${i}`}
             style={{
               ...word,
               color: titleColor,

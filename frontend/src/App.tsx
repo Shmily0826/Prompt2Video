@@ -7,7 +7,7 @@ export const App: React.FC = () => {
   // 1. 状态管理：存储视频的配置参数
   const [videoConfig, setVideoConfig] = useState({
     titleText: "AI Video Generator",
-    titleColor: "#000000",
+    titleColor: "#FFFFFF",
     logoColor1: "#91EAE4",
     logoColor2: "#86A8E7",
   });

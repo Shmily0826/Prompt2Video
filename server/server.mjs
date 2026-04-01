@@ -7,10 +7,11 @@ import { fileURLToPath } from "url";
 import fs from 'fs';
 import OpenAI from 'openai'; // 💡 新增：引入大模型 SDK
 import dotenv from 'dotenv';
-dotenv.config(); // 自动读取 .env 文件
+
+;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
+dotenv.config({ path: path.join(__dirname, '..', '.env') })
 // 确保输出目录存在
 const outDir = path.join(__dirname, "out");
 if (!fs.existsSync(outDir)) {
