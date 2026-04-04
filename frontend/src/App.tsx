@@ -1,8 +1,8 @@
 import { Player } from "@remotion/player";
 import React, { useState } from "react";
 import "./index.css";
-import { HelloWorld } from "../../remotion/src/video/HelloWorld"; // 确保路径指向你移动后的位置
-
+import { HelloWorld, myCompSchema } from "../../remotion/src/video/HelloWorld"; // 确保路径指向你移动后的位置
+import { z } from "zod";
 export const App: React.FC = () => {
   // 1. 状态管理：存储视频的配置参数
 
@@ -129,7 +129,7 @@ export const App: React.FC = () => {
       <div className="flex-1 bg-black rounded-xl overflow-hidden shadow-2xl flex items-center justify-center relative">
         <Player
           component={HelloWorld}
-          inputProps={videoConfig} // 核心：将 State 注入视频
+          inputProps={videoConfig as z.infer<typeof myCompSchema>} // 核心：将 State 注入视频
           // 💡 重点：总时长 = 场景数量 * 单个场景帧数
           durationInFrames={totalFrames}
           fps={30}

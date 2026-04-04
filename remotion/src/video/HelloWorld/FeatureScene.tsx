@@ -23,6 +23,7 @@ export const FeatureScene: React.FC<{
       <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', fontSize: 40 }}>
         {items.map((item, index) => {
           // 每个 item 依次延迟 15 帧出现
+          
           const itemScale = spring({
             frame: frame - (30 + index * 15), 
             fps,

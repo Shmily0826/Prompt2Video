@@ -8,5 +8,9 @@
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "openai": "^6.33.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3"
   }
 }

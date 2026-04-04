@@ -9,12 +9,11 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "Node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx", // 👈 这一行是解决 JSX 报错的关键
-    "types": ["react", "node"]
+    "jsx": "react-jsx"
   },
-  "include": ["remotion", "frontend", "server"]
+  "include": ["remotion", "frontend"]
 }

@@ -22,6 +22,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('🚀 后端服务器运行正常！请从前端页面 (Port 3000) 进行操作。');
+});
 // 💡 1. 初始化 DeepSeek 客户端
 // ⚠️ 注意：请把 "YOUR_DEEPSEEK_API_KEY" 替换成你真实的 API Key
 const openai = new OpenAI({
