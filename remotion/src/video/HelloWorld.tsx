@@ -8,7 +8,6 @@ import {
   spring,
   useCurrentFrame,
   useVideoConfig,
-  interpolateColors,
 } from "remotion";
 import { z } from "zod";
 import { Logo } from "./HelloWorld/Logo";
@@ -56,7 +55,7 @@ export const HelloWorld: React.FC<z.infer<typeof myCompSchema>> = ({
 
   // 💡 1. 提取一个获取场景时长的小工具
   const getSceneDuration = (type: string) => {
-    if (type === "intro") return 90; // 标题场景：3秒 (3 * 30fps = 90)
+    if (type === "intro") return 120; // 标题场景：4秒 (4 * 30fps = 120)
     if (type === "features") return 210; // 列表场景：7秒 (7 * 30fps = 210)
     return 150; // 兜底默认值
   };

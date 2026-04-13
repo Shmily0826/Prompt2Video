@@ -14,13 +14,13 @@ export const App: React.FC = () => {
   scenes: [
     {
       type: "intro",
-      title: "默认标题",
-      subtitle: "正在等待指令...",
+      title: "Default Title",
+      subtitle: "Waiting for instructions...",
     },
     {
       type: "features",
-      title: "核心功能",
-      items: ["AI 自动生成", "多场景切换", "Remotion 渲染"]
+      title: "Core Features",
+      items: ["AI Automatic Generation", "Multi-Scene Switching", "Remotion Rendering"]
     }
   ],
 });
@@ -44,8 +44,8 @@ export const App: React.FC = () => {
       // 更新状态，Player 会自动重新渲染
       setVideoConfig(newConfig);
     } catch (error) {
-      console.error("生成失败:", error);
-      alert("无法连接到后端服务器，请检查 server.mjs 是否运行");
+      console.error("Generation failed:", error);
+      alert("Unable to connect to the backend server, please check if server.mjs is running");
     } finally {
       setLoading(false);
     }
@@ -61,10 +61,10 @@ export const App: React.FC = () => {
         });
         const result = await response.json();
         if (result.success) {
-            alert("渲染成功！文件保存在: " + result.url);
+            alert("Video rendering completed successfully! File saved at: " + result.url);
         }
     } catch (e) {
-        alert("渲染失败，请检查后端终端报错");
+        alert("Video rendering failed, please check the backend terminal for errors");
     } finally {
         setRendering(false);
     }
@@ -87,7 +87,7 @@ export const App: React.FC = () => {
         
         <textarea
           className="w-full p-3 border rounded-lg h-32 focus:ring-2 focus:ring-blue-500 outline-none"
-          placeholder="描述你想要的视频... (例如: 科技感蓝色的片头)"
+          placeholder="Describe the video you want... (e.g., the development of AI technology)"
           value={userInput}
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setUserInput(e.target.value)}
         />
@@ -102,7 +102,7 @@ export const App: React.FC = () => {
                 loading ? "bg-gray-400" : "bg-blue-600 hover:bg-blue-700"
                 }`}
             >
-                {loading ? "✨ 思考中..." : "🪄 开始生成"}
+                {loading ? "✨ Thinking..." : "🪄 Start Generation"}
             </button>
 
             <button
@@ -113,12 +113,12 @@ export const App: React.FC = () => {
                 rendering ? "bg-sky-300 animate-pulse" : "bg-sky-500 hover:bg-sky-600"
                 }`}
             >
-                {rendering ? "⏳" : "📥 导出"}
+                {rendering ? "⏳" : "📥 Export"}
             </button>
             </div>
 
         <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-          <h2 className="text-sm font-semibold mb-2">当前配置 (JSON):</h2>
+          <h2 className="text-sm font-semibold mb-2">Current Configuration (JSON):</h2>
           <pre className="text-xs text-gray-600 overflow-auto max-h-96">
             {JSON.stringify(videoConfig, null, 2)}
           </pre>

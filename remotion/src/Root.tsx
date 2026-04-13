@@ -21,8 +21,7 @@ export const RemotionRoot: React.FC = () => {
         schema={myCompSchema}
         
         defaultProps={{
-          titleText: "Hello COMPSCI 732",
-          titleColor: "#3b82f6",
+          themeColor: "#FFFFFF",
           logoColor1: "#91EAE4",
           logoColor2: "#86A8E7",
           scenes: [
