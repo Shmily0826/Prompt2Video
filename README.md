@@ -334,7 +334,7 @@ This project is related to MERN in the following ways:
 ## 1. Clone the repository
 
 ```shell
-git clone <your-github-classroom-repo-url>
+git clone https://github.com/Shmily0826/Prompt2Video.git
 cd PROMPT2VIDEO
 ```
 
